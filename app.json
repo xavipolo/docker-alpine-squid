@@ -1,0 +1,15 @@
+{
+  "name": "heroku-alpine-squid-proxy",
+  "description": "Deploy Squid to Heroku as a forward proxy (alpine based).",
+  "stack": "container",
+  "env": {
+    "USERNAME": {
+      "description": "Username for authentication.",
+      "required": false
+    },
+    "PASSWORD": {
+      "description": "Password for authentication.",
+      "required": false
+    }
+  }
+}
