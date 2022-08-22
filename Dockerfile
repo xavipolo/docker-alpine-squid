@@ -1,9 +1,6 @@
 FROM alpine:edge
 
-RUN apt-get update -y
-RUN apt-get install -y squid
-RUN apt-get install -y apache2-utils
-RUN apt-get clean
+RUN apk add --no-cache squid apache2-utils
 
 COPY entry.sh /
 COPY squid.conf /etc/squid/squid.conf
