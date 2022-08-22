@@ -1,6 +1,6 @@
 FROM alpine:edge
 
-RUN apk add --no-cache squid socat
+RUN apk add --no-cache squid socat apache2-utils
 COPY entry.sh /
 COPY squid.conf /etc/squid/squid.conf
 RUN chmod a+x /entry.sh
