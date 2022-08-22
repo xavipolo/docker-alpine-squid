@@ -1,12 +1,14 @@
 FROM alpine:edge
 
-RUN apk add --no-cache squid tini
-RUN ln -sf /dev/stdout /var/log/squid/access.log
-RUN chmod 777 /var/run
-ADD ./squid.conf /etc/squid/squid.conf
-USER squid
+RUN apt-get update -y
+RUN apt-get install -y squid
+RUN apt-get install -y apache2-utils
+RUN apt-get clean
+
+COPY entry.sh /
+COPY squid.conf /etc/squid/squid.conf
+RUN chmod a+x /entry.sh
 
 EXPOSE 3128/tcp
 
-ENTRYPOINT ["/sbin/tini", "-g", "--"]
-CMD ["squid", "-NYCd", "1"]
+ENTRYPOINT ["/entry.sh"]
