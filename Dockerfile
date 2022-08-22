@@ -6,5 +6,7 @@ RUN chmod 777 /var/run
 ADD ./squid.conf /etc/squid/squid.conf
 USER squid
 
+EXPOSE 3128/tcp
+
 ENTRYPOINT ["/sbin/tini", "-g", "--"]
 CMD ["squid", "-NYCd", "1"]
